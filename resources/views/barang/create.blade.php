@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.app')
 @section('content')
     <div class="container-sm mt-5">
         <form action="{{ route('barangs.store') }}" method="POST">
@@ -79,4 +79,4 @@
             </div>
         </form>
     </div>
-@endsections
+@endsection
