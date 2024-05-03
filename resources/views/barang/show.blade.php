@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-md-12 mb-3">
                         <label for="satuan" class="form-label">Satuan</label>
-                        <h5>{{ $barang->satuan->name }}</h5>
+                        <h5>{{ $barang->satuan ? $barang->satuan->name : '' }}</h5>
                     </div>
                 </div>
                 <hr>

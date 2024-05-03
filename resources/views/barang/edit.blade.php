@@ -13,7 +13,9 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="kodeBarang" class="form-label">Kode Barang</label>
-                            <input class="form-control @error('kodeBarang') is-invalid @enderror" type="text"
+                            <input class="form-control 
+                            @error('kodeBarang') is-invalid 
+                            @enderror" type="text"
                                 name="kodeBarang" id="kodeBarang"
                                 value="{{ $errors->any() ? old('kodeBarang') : $barang->kodeBarang }}"
                                 placeholder="Enter Kode Barang">
@@ -59,15 +61,15 @@
                                     if ($errors->any()) {
                                         $selected = old('satuan');
                                     } else {
-                                        $selected = $barang->satuan->id;
+                                        $selected = optional($barang->satuan)->id; // Use optional() to avoid error if $barang->satuan is null
                                     }
                                 @endphp
                                 @foreach ($satuans as $satuan)
                                     <option value="{{ $satuan->id }}"{{ $selected == $satuan->id ? 'selected' : '' }}>
                                         {{ $satuan->code . ' - ' . $satuan->name }}</option>
                                 @endforeach
-
-                            </select> @error('satuan')
+                            </select> 
+                            @error('satuan')
                                 <div class="text- danger"><small>{{ $message }}</small></div>
                             @enderror
                         </div>
@@ -87,4 +89,4 @@
             </div>
         </form>
     </div>
-    @endsection
+@endsection
